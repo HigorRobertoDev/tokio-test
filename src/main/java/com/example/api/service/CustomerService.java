@@ -30,5 +30,9 @@ public class CustomerService {
 	public Customer saveCustomer(Customer input) {
 		return repository.save(input);
 	}
+	
+	public void deleteCustumer(Long id) {
+		repository.deleteById(id);
+	}
 
 }
