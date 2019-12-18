@@ -19,19 +19,15 @@ public class Address {
 	private Long id;
 	
 	@Column(nullable = false)
-	@NotEmpty
 	private String nameAddress;
 	
 	@Column(nullable = false)
-	@NotEmpty
 	private String neighborhood;
 	
 	@Column(nullable = false)
-	@NotEmpty
 	private String city;
 	
 	@Column(nullable = false)
-	@NotEmpty
 	private String country;
 	
 	@Column(nullable = false)

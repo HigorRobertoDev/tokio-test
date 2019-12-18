@@ -22,6 +22,9 @@ public class CustomerService {
 	
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private AddressService addressService;
 
 	@Autowired
 	public CustomerService(CustomerRepository repository) {
@@ -48,12 +51,7 @@ public class CustomerService {
 		List<Address> addresses = new ArrayList<>();
 		input.getAddresses().stream()
 			.forEach(ad -> {
-				Address address = new Address();
-				address.setNameAddress(ad.getNameAddress());
-				address.setNeighborhood(ad.getNeighborhood());
-				address.setCity(ad.getCity());
-				address.setCountry(ad.getCountry());
-				address.setCpf(ad.getCpf());
+				Address address = addressService.getCepByCep(ad.getCpf());
 				address.setCustomer(customer);
 				addresses.add(address);
 			});
