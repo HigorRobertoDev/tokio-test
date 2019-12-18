@@ -26,5 +26,9 @@ public class CustomerService {
 	public Optional<Customer> findById(Long id) {
 		return repository.findById(id);
 	}
+	
+	public Customer saveCustomer(Customer input) {
+		return repository.save(input);
+	}
 
 }
