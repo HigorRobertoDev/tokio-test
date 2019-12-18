@@ -1,6 +1,7 @@
 package com.example.api.web.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -43,12 +44,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public Customer saveCustomer(@Valid @RequestBody Customer input) {
+	public Optional<Customer> saveCustomer(@Valid @RequestBody Customer input) {
 		return service.saveCustomer(input);
 	}
 	
 	@PutMapping
-	public Customer putCustomer(@Valid @RequestBody Customer input) {
+	public Optional<Customer> putCustomer(@Valid @RequestBody Customer input) {
 		service.findById(input.getId())
 			 	.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 		

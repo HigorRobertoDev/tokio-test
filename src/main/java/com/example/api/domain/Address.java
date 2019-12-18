@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Address {
@@ -33,6 +37,19 @@ public class Address {
 	@Column(nullable = false)
 	@NotEmpty
 	private String cpf;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id", nullable = false)
+	@JsonBackReference
+	private Customer customer;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNameAddress() {
 		return nameAddress;
@@ -72,6 +89,14 @@ public class Address {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 }
