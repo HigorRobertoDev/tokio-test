@@ -2,6 +2,8 @@ package com.example.api.web.rest;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,12 +42,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public Customer saveCustomer(@RequestBody Customer input) {
+	public Customer saveCustomer(@Valid @RequestBody Customer input) {
 		return service.saveCustomer(input);
 	}
 	
 	@PutMapping
-	public Customer putCustomer(@RequestBody Customer input) {
+	public Customer putCustomer(@Valid @RequestBody Customer input) {
 		service.findById(input.getId())
 			 	.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 		
